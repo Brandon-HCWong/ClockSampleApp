@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="times">時間</string>
+    <string name="setting">設定</string>
+    <string name="add">新增</string>
+    <string name="edit">編輯</string>
+    <string name="delete">刪除</string>
+    <string name="refresh_rate">更新頻率</string>
+    <string name="minute">分</string>
+    <string name="no_data">無資料</string>
+    <string name="sort">排序</string>
+    <string name="ascending">升冪</string>
+    <string name="descending">降冪</string>
+</resources>

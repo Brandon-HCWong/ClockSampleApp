@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">ClockSampleApp</string>
+    <string name="app_name" translatable="false">ClockSampleApp</string>
+
+    <string name="times">Times</string>
+    <string name="setting">Setting</string>
+    <string name="add">Add</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="refresh_rate">Refresh Rate</string>
+    <string name="minute">min</string>
+    <string name="no_data">No Data</string>
+    <string name="sort">Sort</string>
+    <string name="ascending">ASC</string>
+    <string name="descending">DESC</string>
 </resources>
