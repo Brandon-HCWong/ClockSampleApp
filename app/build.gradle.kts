@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.devtools.ksp") version Versions.KSP_PLUGIN_VERSION
 }
 
 android {
@@ -54,6 +55,15 @@ dependencies {
 
     /** Third Party Library **/
     implementation("net.danlew:android.joda:${Versions.JODA_TIME_VERSION}")
+    implementation("com.squareup.okhttp3:okhttp:${Versions.OKHTTP3_VERSION}")
+    implementation("com.squareup.okhttp3:logging-interceptor:${Versions.OKHTTP3_VERSION}")
+    implementation("com.squareup.retrofit2:retrofit:${Versions.RETROFIT_VERSION}")
+    implementation("com.squareup.retrofit2:converter-moshi:${Versions.RETROFIT_VERSION}")
+    implementation("com.squareup.moshi:moshi-kotlin:${Versions.MOSHI_VERSION}")
+    implementation("com.squareup.moshi:moshi-adapters:${Versions.MOSHI_VERSION}")
+
+    /** Annotation **/
+    ksp("com.squareup.moshi:moshi-kotlin-codegen:${Versions.MOSHI_VERSION}")
 
     /** Unit Test **/
     testImplementation("junit:junit:${Versions.TEST_JUNIT_VERSION}")

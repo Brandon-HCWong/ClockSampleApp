@@ -2,6 +2,7 @@ object Versions {
     /** Gradle **/
     const val ANDROID_APPLICATION_GRADLE_PLUGIN_VERSION = "8.2.0"
     const val KOTLIN_GRADLE_PLUGIN_VERSION = "1.9.21"
+    const val KSP_PLUGIN_VERSION = "1.9.21-1.0.16"
 
     /** AndroidX SDK **/
     const val SDK_COMPILE_VERSION = 34
@@ -19,6 +20,9 @@ object Versions {
 
     /** Third Party Library **/
     const val JODA_TIME_VERSION = "2.12.7"
+    const val OKHTTP3_VERSION = "4.10.0"
+    const val RETROFIT_VERSION = "2.9.0"
+    const val MOSHI_VERSION = "1.15.1"
 
     /** Unit Test **/
     const val TEST_JUNIT_VERSION = "4.13.2"
