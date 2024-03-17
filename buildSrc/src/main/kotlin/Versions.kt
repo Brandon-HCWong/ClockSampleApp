@@ -23,6 +23,7 @@ object Versions {
     const val OKHTTP3_VERSION = "4.10.0"
     const val RETROFIT_VERSION = "2.9.0"
     const val MOSHI_VERSION = "1.15.1"
+    const val KOIN_VERSION = "3.4.0"
 
     /** Unit Test **/
     const val TEST_JUNIT_VERSION = "4.13.2"

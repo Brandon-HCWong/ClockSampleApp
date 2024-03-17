@@ -54,6 +54,8 @@ dependencies {
     implementation("com.google.android.material:material:${Versions.GOOGLE_MATERIAL_VERSION}")
 
     /** Third Party Library **/
+    implementation("io.insert-koin:koin-android:${Versions.KOIN_VERSION}")
+    implementation("io.insert-koin:koin-android-compat:${Versions.KOIN_VERSION}")
     implementation("net.danlew:android.joda:${Versions.JODA_TIME_VERSION}")
     implementation("com.squareup.okhttp3:okhttp:${Versions.OKHTTP3_VERSION}")
     implementation("com.squareup.okhttp3:logging-interceptor:${Versions.OKHTTP3_VERSION}")
