@@ -16,6 +16,9 @@ object Versions {
     /** Google **/
     const val GOOGLE_MATERIAL_VERSION = "1.11.0"
 
+    /** Third Party Library **/
+    const val JODA_TIME_VERSION = "2.12.7"
+
     /** Unit Test **/
     const val TEST_JUNIT_VERSION = "4.13.2"
 

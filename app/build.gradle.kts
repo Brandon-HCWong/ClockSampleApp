@@ -50,6 +50,9 @@ dependencies {
     /** Google **/
     implementation("com.google.android.material:material:${Versions.GOOGLE_MATERIAL_VERSION}")
 
+    /** Third Party Library **/
+    implementation("net.danlew:android.joda:${Versions.JODA_TIME_VERSION}")
+
     /** Unit Test **/
     testImplementation("junit:junit:${Versions.TEST_JUNIT_VERSION}")
 
