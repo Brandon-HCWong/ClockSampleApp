@@ -7,6 +7,7 @@ object Versions {
     const val SDK_COMPILE_VERSION = 34
     const val SDK_TARGET_VERSION = 33
     const val SDK_MIN_VERSION = 24
+    const val ANDROIDX_NAVIGATION_VERSION = "2.7.7"
 
     /** AndroidX **/
     const val ANDROIDX_CORE_VERSION = "1.12.0"

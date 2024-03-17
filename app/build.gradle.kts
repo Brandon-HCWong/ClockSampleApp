@@ -46,6 +46,8 @@ dependencies {
     implementation("androidx.core:core-ktx:${Versions.ANDROIDX_CORE_VERSION}")
     implementation("androidx.appcompat:appcompat:${Versions.ANDROIDX_APPCOMPAT_VERSION}")
     implementation("androidx.constraintlayout:constraintlayout:${Versions.ANDROIDX_CONSTRAINT_LAYOUT_VERSION}")
+    implementation("androidx.navigation:navigation-fragment-ktx:${Versions.ANDROIDX_NAVIGATION_VERSION}")
+    implementation("androidx.navigation:navigation-ui-ktx:${Versions.ANDROIDX_NAVIGATION_VERSION}")
 
     /** Google **/
     implementation("com.google.android.material:material:${Versions.GOOGLE_MATERIAL_VERSION}")
