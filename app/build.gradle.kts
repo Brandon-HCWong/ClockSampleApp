@@ -1,7 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("com.google.devtools.ksp") version Versions.KSP_PLUGIN_VERSION
+    id("com.google.devtools.ksp")
+    id("androidx.room")
 }
 
 android {
@@ -37,6 +38,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
+    room {
+        schemaDirectory("$projectDir/schemas")
+    }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -49,6 +54,8 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:${Versions.ANDROIDX_CONSTRAINT_LAYOUT_VERSION}")
     implementation("androidx.navigation:navigation-fragment-ktx:${Versions.ANDROIDX_NAVIGATION_VERSION}")
     implementation("androidx.navigation:navigation-ui-ktx:${Versions.ANDROIDX_NAVIGATION_VERSION}")
+    implementation("androidx.room:room-runtime:${Versions.ANDROIDX_ROOM_VERSION}")
+    implementation("androidx.room:room-ktx:${Versions.ANDROIDX_ROOM_VERSION}")
 
     /** Google **/
     implementation("com.google.android.material:material:${Versions.GOOGLE_MATERIAL_VERSION}")
@@ -66,6 +73,7 @@ dependencies {
 
     /** Annotation **/
     ksp("com.squareup.moshi:moshi-kotlin-codegen:${Versions.MOSHI_VERSION}")
+    ksp("androidx.room:room-compiler:${Versions.ANDROIDX_ROOM_VERSION}")
 
     /** Unit Test **/
     testImplementation("junit:junit:${Versions.TEST_JUNIT_VERSION}")

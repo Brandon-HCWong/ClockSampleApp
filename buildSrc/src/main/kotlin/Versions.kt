@@ -14,6 +14,7 @@ object Versions {
     const val ANDROIDX_CORE_VERSION = "1.12.0"
     const val ANDROIDX_APPCOMPAT_VERSION = "1.6.1"
     const val ANDROIDX_CONSTRAINT_LAYOUT_VERSION = "2.1.4"
+    const val ANDROIDX_ROOM_VERSION = "2.6.1"
 
     /** Google **/
     const val GOOGLE_MATERIAL_VERSION = "1.11.0"
