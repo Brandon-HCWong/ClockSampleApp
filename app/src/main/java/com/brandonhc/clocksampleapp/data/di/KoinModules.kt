@@ -7,6 +7,7 @@ import com.brandonhc.clocksampleapp.data.repository.TimesRepository
 import com.brandonhc.clocksampleapp.data.room.AppDatabase
 import com.brandonhc.clocksampleapp.ui.viewmodel.EditViewModel
 import com.brandonhc.clocksampleapp.ui.viewmodel.SettingViewModel
+import com.brandonhc.clocksampleapp.ui.viewmodel.TimesViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
@@ -31,6 +32,7 @@ object KoinModules {
     private val viewModelModule = module {
         viewModel { SettingViewModel(get()) }
         viewModel { EditViewModel(get()) }
+        viewModel { TimesViewModel(get(), get()) }
     }
 
     /**

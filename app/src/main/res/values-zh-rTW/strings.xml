@@ -6,10 +6,12 @@
     <string name="edit">編輯</string>
     <string name="delete">刪除</string>
     <string name="refresh_rate">更新頻率</string>
-    <string name="minute">分</string>
+    <string name="minute">\/ 分</string>
     <string name="no_data">無資料</string>
     <string name="sort">排序</string>
     <string name="ascending">升冪</string>
     <string name="descending">降冪</string>
     <string name="server_error">"無法從伺服器取得資料</string>
+    <string name="switch_language">"切換語言: %s"</string>
+    <string name="switch_sort">"切換排序: %s"</string>
 </resources>

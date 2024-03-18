@@ -1,16 +1,22 @@
 <resources>
     <string name="app_name" translatable="false">ClockSampleApp</string>
 
+    <string name="refresh_rate_1_minute" translatable="false">1</string>
+    <string name="refresh_rate_5_minutes" translatable="false">5</string>
+    <string name="refresh_rate_15_minutes" translatable="false">15</string>
+
     <string name="times">Times</string>
     <string name="setting">Setting</string>
     <string name="add">Add</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
     <string name="refresh_rate">Refresh Rate</string>
-    <string name="minute">min</string>
+    <string name="minute">\/ min</string>
     <string name="no_data">No Data</string>
     <string name="sort">Sort</string>
     <string name="ascending">ASC</string>
     <string name="descending">DESC</string>
     <string name="server_error">"Unable to retrieve data from the server."</string>
+    <string name="switch_language">"Switch Language: %s"</string>
+    <string name="switch_sort">"Switch Sort: %s"</string>
 </resources>
