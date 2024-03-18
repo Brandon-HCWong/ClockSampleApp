@@ -2,6 +2,7 @@ package com.brandonhc.clocksampleapp.data.di
 
 import android.content.Context
 import com.brandonhc.clocksampleapp.data.api.TimeApiService
+import com.brandonhc.clocksampleapp.data.repository.SharedPreferenceRepository
 import com.brandonhc.clocksampleapp.data.repository.TimesRepository
 import com.brandonhc.clocksampleapp.data.room.AppDatabase
 import com.brandonhc.clocksampleapp.ui.viewmodel.EditViewModel
@@ -48,6 +49,15 @@ object KoinModules {
                 get<AppDatabase>().userTimeZoneInfoDao()
             )
         }
+        single {
+            SharedPreferenceRepository(
+                androidContext().getSharedPreferences(
+                    SharedPreferenceRepository.PREFERENCE_NAME,
+                    Context.MODE_PRIVATE
+                )
+            )
+        }
+
     }
 
     private val databaseModule = module {
