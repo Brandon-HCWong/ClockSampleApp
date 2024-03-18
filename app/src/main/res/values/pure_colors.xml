@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Pure Color Naming Website: https://chir.ag/projects/name-that-color/ -->
+<resources>
+    <color name="victoria">#464393</color>
+    <color name="periwinkle_gray">#C7C6EC</color>
+
+    <color name="black">#000000</color>
+
+    <color name="white_l100">#FFFFFF</color>
+    <color name="white_l97">#F9F9F9</color>
+    <color name="white_l96">#F6F6F6</color>
+    <color name="white_l94">#F2F2F2</color>
+    <color name="white_l92">#ECECEC</color>
+    <color name="white_l80">#CCCCCC</color>
+    <color name="white_l56">#909090</color>
+    <color name="white_l43">#6F6F6F</color>
+    <color name="white_l29">#4B4B4B</color>
+    <color name="white_l18">#2D2D2D</color>
+</resources>

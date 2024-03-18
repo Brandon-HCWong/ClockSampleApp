@@ -24,7 +24,6 @@ import kotlin.math.abs
 
 class AnalogClockDrawable(resources: Resources, private var backgroundVectorDrawable: VectorDrawable) :
     Drawable(), Animatable {
-    private val facePaint: Paint
     private val rimPaint: Paint
     private val minAnimator: ValueAnimator
     private val hourAnimator: ValueAnimator
@@ -45,9 +44,6 @@ class AnalogClockDrawable(resources: Resources, private var backgroundVectorDraw
     private var animateDays = true
 
     init {
-        facePaint = Paint(Paint.ANTI_ALIAS_FLAG)
-        facePaint.color = resources.getColor(FACE_COLOR)
-        facePaint.style = Paint.Style.FILL
         rimPaint = Paint(Paint.ANTI_ALIAS_FLAG)
         rimPaint.color = resources.getColor(RIM_COLOR)
         rimPaint.style = Paint.Style.STROKE
@@ -151,7 +147,6 @@ class AnalogClockDrawable(resources: Resources, private var backgroundVectorDraw
 
     override fun setAlpha(alpha: Int) {
         rimPaint.alpha = alpha
-        facePaint.alpha = alpha
         invalidateSelf()
     }
 
@@ -252,9 +247,6 @@ class AnalogClockDrawable(resources: Resources, private var backgroundVectorDraw
 
     companion object {
         private const val ANIMATION_DURATION = 500
-
-        @ColorRes
-        private val FACE_COLOR = R.color.white
 
         @ColorRes
         private val RIM_COLOR: Int = R.color.black
