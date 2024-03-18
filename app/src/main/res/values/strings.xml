@@ -12,4 +12,5 @@
     <string name="sort">Sort</string>
     <string name="ascending">ASC</string>
     <string name="descending">DESC</string>
+    <string name="server_error">"Unable to retrieve data from the server."</string>
 </resources>

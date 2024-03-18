@@ -11,4 +11,5 @@
     <string name="sort">排序</string>
     <string name="ascending">升冪</string>
     <string name="descending">降冪</string>
+    <string name="server_error">"無法從伺服器取得資料</string>
 </resources>

@@ -11,6 +11,17 @@
         android:name="com.brandonhc.clocksampleapp.ui.fragment.SettingFragment"
         android:label="SettingFragment"
         tools:layout="@layout/fragment_setting">
+
+        <action
+            android:id="@+id/action_settingFragment_to_editFragment"
+            app:destination="@id/editFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="com.brandonhc.clocksampleapp.ui.fragment.EditFragment"
+        android:label="EditFragment"
+        tools:layout="@layout/fragment_edit">
     </fragment>
 
 </navigation>

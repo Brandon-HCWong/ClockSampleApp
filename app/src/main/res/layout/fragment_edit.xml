@@ -16,22 +16,24 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/mb_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="8dp"
-        android:text="@string/add"
+    <ImageView
+        android:id="@+id/iv_left_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="8dp"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/gl_top"
-        app:layout_constraintRight_toLeftOf="@id/mb_edit"/>
+        app:tint="@color/design_black_800"
+        app:srcCompat="@drawable/ic_arrow_gray_24dp"/>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/mb_edit"
+        android:id="@+id/mb_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="8dp"
-        android:text="@string/edit"
+        android:text="@string/delete"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/gl_top"
         app:layout_constraintRight_toRightOf="parent"/>
