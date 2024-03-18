@@ -9,6 +9,7 @@ import com.brandonhc.clocksampleapp.data.room.dao.UserTimeZoneInfoDao
 import com.brandonhc.clocksampleapp.data.room.entity.IanaTimeZoneIdDbEntity
 import com.brandonhc.clocksampleapp.data.room.entity.IanaTimeZoneInfoDbEntity
 import com.brandonhc.clocksampleapp.data.room.entity.UserTimeZoneInfoDbEntity
+import com.brandonhc.clocksampleapp.data.ui.SupportedSortingMethod
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -74,11 +75,14 @@ class TimesRepository(
         userTimeZoneInfoDao.deleteAll(timeZoneIdList)
     }
 
-    suspend fun loadUserTimeZoneInfoList(isOrderedByAscending: Boolean) = withContext(Dispatchers.IO) {
-        if (isOrderedByAscending) {
-            userTimeZoneInfoDao.loadAllOrderedByAscending()
-        } else {
-            userTimeZoneInfoDao.loadAllOrderedByDescending()
+    suspend fun loadUserTimeZoneInfoList(supportedSortingMethod: SupportedSortingMethod) = withContext(Dispatchers.IO) {
+        when (supportedSortingMethod) {
+            SupportedSortingMethod.ASCENDING -> {
+                userTimeZoneInfoDao.loadAllOrderedByAscending()
+            }
+            SupportedSortingMethod.DESCENDING -> {
+                userTimeZoneInfoDao.loadAllOrderedByDescending()
+            }
         }
     }
 }

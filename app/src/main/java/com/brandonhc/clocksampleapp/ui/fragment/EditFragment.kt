@@ -66,7 +66,7 @@ class EditFragment : Fragment(), TimeZoneIdAdapter.OnItemInteractionListener {
                         val userTimeZoneInfoDbEntity =
                             ianaTimeZoneInfoDbEntity.toUserTimeZoneInfoDbEntity(System.currentTimeMillis())
                         editViewModel.saveUserTimeZoneInfo(userTimeZoneInfoDbEntity)
-                        val entityList = editViewModel.loadUserTimeZoneInfoList(false)
+                        val entityList = editViewModel.loadUserTimeZoneInfoList()
                         fragmentEditBinding.tvNoData.isVisible = entityList.isEmpty()
                         timeZoneIdAdapter.submitList(entityList.map { it.timeZoneId })
                     } ?: run {
@@ -90,7 +90,7 @@ class EditFragment : Fragment(), TimeZoneIdAdapter.OnItemInteractionListener {
         viewLifecycleOwner.lifecycleScope.launch {
             showProgressing()
             editViewModel.loadTimeZoneIdList(false)
-            val entityList = editViewModel.loadUserTimeZoneInfoList(false)
+            val entityList = editViewModel.loadUserTimeZoneInfoList()
             tvNoData.isVisible = entityList.isEmpty()
             timeZoneIdAdapter.submitList(entityList.map { it.timeZoneId })
             hideProgressing()
@@ -108,7 +108,7 @@ class EditFragment : Fragment(), TimeZoneIdAdapter.OnItemInteractionListener {
             viewLifecycleOwner.lifecycleScope.launch {
                 showProgressing()
                 editViewModel.deleteUserTimeZoneInfo(editViewModel.getSelectedTimeZoneIdList())
-                val entityList = editViewModel.loadUserTimeZoneInfoList(false)
+                val entityList = editViewModel.loadUserTimeZoneInfoList()
                 tvNoData.isVisible = entityList.isEmpty()
                 timeZoneIdAdapter.submitList(entityList.map { it.timeZoneId })
                 hideProgressing()

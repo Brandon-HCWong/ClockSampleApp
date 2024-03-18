@@ -54,7 +54,7 @@ class SettingFragment : Fragment(), TimeZoneIdAdapter.OnItemInteractionListener 
         viewLifecycleOwner.lifecycleScope.launch {
             showProgressing()
             settingViewModel.loadTimeZoneIdList(false)
-            val entityList = settingViewModel.loadUserTimeZoneInfoList(false)
+            val entityList = settingViewModel.loadUserTimeZoneInfoList()
             tvNoData.isVisible = entityList.isEmpty()
             timeZoneIdAdapter.submitList(entityList.map { it.timeZoneId })
             hideProgressing()
@@ -79,7 +79,7 @@ class SettingFragment : Fragment(), TimeZoneIdAdapter.OnItemInteractionListener 
                     entity?.let {
                         val userTimeZoneInfoDbEntity = it.toUserTimeZoneInfoDbEntity(System.currentTimeMillis())
                         settingViewModel.saveUserTimeZoneInfo(userTimeZoneInfoDbEntity)
-                        val entityList = settingViewModel.loadUserTimeZoneInfoList(false)
+                        val entityList = settingViewModel.loadUserTimeZoneInfoList()
                         tvNoData.isVisible = entityList.isEmpty()
                         timeZoneIdAdapter.submitList(entityList.map { it.timeZoneId })
                     } ?: run {

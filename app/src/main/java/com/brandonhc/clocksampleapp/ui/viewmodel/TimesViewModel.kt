@@ -3,42 +3,32 @@ package com.brandonhc.clocksampleapp.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import com.brandonhc.clocksampleapp.data.repository.SharedPreferenceRepository
 import com.brandonhc.clocksampleapp.data.repository.TimesRepository
-import com.brandonhc.clocksampleapp.data.room.entity.IanaTimeZoneInfoDbEntity
-import com.brandonhc.clocksampleapp.data.room.entity.UserTimeZoneInfoDbEntity
+import com.brandonhc.clocksampleapp.data.ui.SupportedSortingMethod
 
 class TimesViewModel(
     private val timesRepository: TimesRepository,
     private val sharedPreferenceRepository: SharedPreferenceRepository
 ) : ViewModel() {
-    private val timeZoneIdList: ArrayList<String> = arrayListOf()
+    var sortingMethod: SupportedSortingMethod
+        get() {
+            return SupportedSortingMethod.valueOf(sharedPreferenceRepository.sortingMethod)
+        }
+        set(value) {
+            sharedPreferenceRepository.sortingMethod = value.name
+        }
+    var refreshRateMinutes: Int
+        get() {
+            return sharedPreferenceRepository.refreshRateMinutes
+        }
+        set(value) {
+            sharedPreferenceRepository.refreshRateMinutes = value
+        }
 
     fun setCurrentLanguage(language: String) {
         sharedPreferenceRepository.currentLanguage = language
     }
 
-    fun getCurrentTimeZoneIdList() = timeZoneIdList
-
-    suspend fun loadTimeZoneIdList(isNeedForcedUpdate: Boolean): List<String> {
-        if (isNeedForcedUpdate || timesRepository.loadTimeZoneIdList().isEmpty()) {
-            timesRepository.fetchRemoteTimeZoneIdList()
-        }
-        timesRepository.loadTimeZoneIdList()
-            .takeIf { it.isNotEmpty() }
-            ?.let { localList ->
-                timeZoneIdList.clear()
-                timeZoneIdList.addAll(localList)
-            }
-        return timeZoneIdList
-    }
-
-    suspend fun loadTimeZoneInfo(timeZoneId: String, isNeedForcedUpdate: Boolean): IanaTimeZoneInfoDbEntity? {
-        if (isNeedForcedUpdate || timesRepository.loadTimeZoneInfo(timeZoneId) == null) {
-            timesRepository.fetchRemoteTimeZoneInfo(timeZoneId)
-        }
-        return timesRepository.loadTimeZoneInfo(timeZoneId)
-    }
-
-    suspend fun saveUserTimeZoneInfo(entity: UserTimeZoneInfoDbEntity) = timesRepository.saveUserTimeZoneInfo(entity)
-
-    suspend fun loadUserTimeZoneInfoList(isOrderedByAscending: Boolean) = timesRepository.loadUserTimeZoneInfoList(isOrderedByAscending)
+    suspend fun loadUserTimeZoneInfoList() = timesRepository.loadUserTimeZoneInfoList(
+        SupportedSortingMethod.valueOf(sharedPreferenceRepository.sortingMethod)
+    )
 }

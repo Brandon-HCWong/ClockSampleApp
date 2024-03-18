@@ -1,12 +1,15 @@
 package com.brandonhc.clocksampleapp.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.brandonhc.clocksampleapp.data.repository.SharedPreferenceRepository
 import com.brandonhc.clocksampleapp.data.repository.TimesRepository
 import com.brandonhc.clocksampleapp.data.room.entity.IanaTimeZoneInfoDbEntity
 import com.brandonhc.clocksampleapp.data.room.entity.UserTimeZoneInfoDbEntity
+import com.brandonhc.clocksampleapp.data.ui.SupportedSortingMethod
 
 class EditViewModel(
-    private val timesRepository: TimesRepository
+    private val timesRepository: TimesRepository,
+    private val sharedPreferenceRepository: SharedPreferenceRepository
 ) : ViewModel() {
     private val timeZoneIdList: ArrayList<String> = arrayListOf()
     private val selectedTimeZoneIdList: ArrayList<String> = arrayListOf()
@@ -51,5 +54,5 @@ class EditViewModel(
 
     suspend fun deleteUserTimeZoneInfo(timeZoneIdList: List<String>) = timesRepository.deleteUserTimeZoneInfo(timeZoneIdList)
 
-    suspend fun loadUserTimeZoneInfoList(isOrderedByAscending: Boolean) = timesRepository.loadUserTimeZoneInfoList(isOrderedByAscending)
+    suspend fun loadUserTimeZoneInfoList() = timesRepository.loadUserTimeZoneInfoList(SupportedSortingMethod.valueOf(sharedPreferenceRepository.sortingMethod))
 }

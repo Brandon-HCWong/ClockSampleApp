@@ -15,6 +15,7 @@ import android.graphics.drawable.Animatable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.VectorDrawable
 import android.util.Log
+import android.util.TypedValue
 import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.annotation.ColorRes
 import com.brandonhc.clocksampleapp.R
@@ -48,7 +49,9 @@ class AnalogClockDrawable(resources: Resources, private var backgroundVectorDraw
         rimPaint.color = resources.getColor(RIM_COLOR)
         rimPaint.style = Paint.Style.STROKE
         rimPaint.strokeCap = Cap.ROUND
-        rimPaint.strokeWidth = 20f
+        rimPaint.strokeWidth = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP, 4f, Resources.getSystem().displayMetrics
+        )
         hourHandPath = Path()
         minuteHandPath = Path()
         hourAnimator = ValueAnimator.ofFloat(0f, 0f)

@@ -30,8 +30,8 @@ object KoinModules {
      *  ViewModel component.
      */
     private val viewModelModule = module {
-        viewModel { SettingViewModel(get()) }
-        viewModel { EditViewModel(get()) }
+        viewModel { SettingViewModel(get(), get()) }
+        viewModel { EditViewModel(get(), get()) }
         viewModel { TimesViewModel(get(), get()) }
     }
 
