@@ -45,6 +45,11 @@ class EditFragment : Fragment(), TimeZoneIdAdapter.OnItemInteractionListener {
         TimeZoneIdSelectionDialogFragment.hide(childFragmentManager)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
+
     override fun onItemClick(timeZoneId: String, position: Int) {
         TimeZoneIdSelectionDialogFragment.show(
             childFragmentManager,

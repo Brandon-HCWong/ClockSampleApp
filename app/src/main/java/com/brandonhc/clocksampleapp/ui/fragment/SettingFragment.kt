@@ -45,6 +45,11 @@ class SettingFragment : Fragment(), TimeZoneIdAdapter.OnItemInteractionListener 
         TimeZoneIdSelectionDialogFragment.hide(childFragmentManager)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
+
     private fun FragmentSettingBinding.initData() {
         viewLifecycleOwner.lifecycleScope.launch {
             showProgressing()
