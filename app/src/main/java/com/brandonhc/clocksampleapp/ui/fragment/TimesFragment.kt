@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.brandonhc.clocksampleapp.R
 import com.brandonhc.clocksampleapp.data.ui.SupportedLanguage
+import com.brandonhc.clocksampleapp.data.ui.SupportedRefreshRate
 import com.brandonhc.clocksampleapp.data.ui.SupportedSortingMethod
 import com.brandonhc.clocksampleapp.databinding.FragmentTimesBinding
 import com.brandonhc.clocksampleapp.ui.fragment.recyclerview.adapter.AnalogClockAdapter
@@ -72,15 +73,15 @@ class TimesFragment : Fragment() {
                 .show()
         }
 
-        val currentSortMethod = timesViewModel.sortingMethod
-        mbSort.text = getString(R.string.switch_sort, getString(currentSortMethod.resId))
+        mbSort.text = getString(R.string.switch_sort, getString(timesViewModel.sortingMethod.resId))
         mbSort.setOnClickListener {
             MaterialAlertDialogBuilder(requireContext())
                 .setSingleChoiceItems(
                     SupportedSortingMethod.getCharSequenceArray(requireContext()),
-                    currentSortMethod.ordinal
+                    timesViewModel.sortingMethod.ordinal
                 ) { dialog, which ->
                     timesViewModel.sortingMethod = SupportedSortingMethod.fromIndex(which)
+                    mbSort.text = getString(R.string.switch_sort, getString(timesViewModel.sortingMethod.resId))
                     initData()
                     dialog.dismiss()
                 }
@@ -88,7 +89,14 @@ class TimesFragment : Fragment() {
                 .show()
         }
 
+        rgRefreshRate.check(timesViewModel.refreshRate.resId)
+        rgRefreshRate.setOnCheckedChangeListener { group, checkedId ->
+            timesViewModel.refreshRate = SupportedRefreshRate.fromResIdOrDefault(checkedId)
+            analogClockAdapter.setRefreshRateMinutes(timesViewModel.refreshRate)
+        }
+
         analogClockAdapter = AnalogClockAdapter()
+        analogClockAdapter.setRefreshRateMinutes(timesViewModel.refreshRate)
         rvContent.layoutManager = GridLayoutManager(requireContext(), 2)
         rvContent.adapter = analogClockAdapter
     }

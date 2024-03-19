@@ -19,6 +19,8 @@ import android.util.TypedValue
 import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.annotation.ColorRes
 import com.brandonhc.clocksampleapp.R
+import org.joda.time.DateTime
+import org.joda.time.DateTimeZone
 import org.joda.time.LocalDateTime
 import org.joda.time.Minutes.minutesBetween
 import kotlin.math.abs
@@ -42,7 +44,7 @@ class AnalogClockDrawable(resources: Resources, private var backgroundVectorDraw
     private var hourAnimInterrupted = false
     private var minAnimInterrupted = false
     private var previousTime: LocalDateTime
-    private var animateDays = true
+    private var dateTimeZone: DateTimeZone
 
     init {
         rimPaint = Paint(Paint.ANTI_ALIAS_FLAG)
@@ -91,6 +93,7 @@ class AnalogClockDrawable(resources: Resources, private var backgroundVectorDraw
             }
         })
         previousTime = LocalDateTime.now().withTime(0, 0, 0, 0)
+        dateTimeZone = DateTimeZone.UTC
     }
 
     override fun onBoundsChange(bounds: Rect) {
@@ -169,8 +172,12 @@ class AnalogClockDrawable(resources: Resources, private var backgroundVectorDraw
         minAnimator.start()
     }
 
-    fun setAnimateDays(animateDays: Boolean) {
-        this.animateDays = animateDays
+    fun setTimeZone(dateTimeZone: DateTimeZone) {
+        this.dateTimeZone = dateTimeZone
+    }
+
+    fun start(newTime: DateTime) {
+        start(newTime.withZone(dateTimeZone).toLocalDateTime())
     }
 
     fun start(newTime: LocalDateTime) {
@@ -209,10 +216,16 @@ class AnalogClockDrawable(resources: Resources, private var backgroundVectorDraw
         return hourAnimator.isRunning || minAnimator.isRunning
     }
 
-    private fun getMinutesBetween(t1: LocalDateTime, t2: LocalDateTime): Int {
-        if(animateDays) {
-            return minutesBetween(t1, t2).minutes
+    fun getMinutesFromPrevious(): Int {
+        val currentLocalDateTime = DateTime(dateTimeZone)
+        return if (currentLocalDateTime.minuteOfDay == 0) {
+            Int.MAX_VALUE
+        } else {
+            currentLocalDateTime.minuteOfDay - previousTime.toDateTime().minuteOfDay
         }
+    }
+
+    private fun getMinutesBetween(t1: LocalDateTime, t2: LocalDateTime): Int {
         return minutesBetween(t1, t2.withDate(t1.year, t1.monthOfYear, t1.dayOfMonth)).minutes
     }
 
