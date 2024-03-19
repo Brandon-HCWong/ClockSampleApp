@@ -1,0 +1,98 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "e5ecf58973e23630b78b5282a3c3f05f",
+    "entities": [
+      {
+        "tableName": "IanaTimeZoneIdDb",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`dbId` TEXT NOT NULL, `ianaTimeZoneIdList` TEXT NOT NULL, PRIMARY KEY(`dbId`))",
+        "fields": [
+          {
+            "fieldPath": "dbId",
+            "columnName": "dbId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ianaTimeZoneIdList",
+            "columnName": "ianaTimeZoneIdList",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "dbId"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "IanaTimeZoneInfoDb",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`timeZoneId` TEXT NOT NULL, `utcOffsetSeconds` INTEGER NOT NULL, PRIMARY KEY(`timeZoneId`))",
+        "fields": [
+          {
+            "fieldPath": "timeZoneId",
+            "columnName": "timeZoneId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "utcOffsetSeconds",
+            "columnName": "utcOffsetSeconds",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "timeZoneId"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "UserTimeZoneInfoDb",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`timeZoneId` TEXT NOT NULL, `utcOffsetSeconds` INTEGER NOT NULL, `createdAtMilliseconds` INTEGER NOT NULL, PRIMARY KEY(`timeZoneId`))",
+        "fields": [
+          {
+            "fieldPath": "timeZoneId",
+            "columnName": "timeZoneId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "utcOffsetSeconds",
+            "columnName": "utcOffsetSeconds",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAtMilliseconds",
+            "columnName": "createdAtMilliseconds",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "timeZoneId"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e5ecf58973e23630b78b5282a3c3f05f')"
+    ]
+  }
+}
